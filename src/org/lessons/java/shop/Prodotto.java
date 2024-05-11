@@ -32,7 +32,10 @@ public class Prodotto {
 	
 	private double prezzo;
 	
-	private static double iva;
+	private static double iva = 0.22;
+	
+	private double prezzoIva;
+	
 
 // costruttore
 public Prodotto( String nome , String descrizione , double prezzo)  {
@@ -43,20 +46,20 @@ public Prodotto( String nome , String descrizione , double prezzo)  {
 	
 	this.descrizione = descrizione;
 	
-	this.prezzo = prezzo;
+	this.prezzo = basePrice(prezzo);
 	
-	this.iva = prezzo * 0.22;
+	this.prezzoIva = aggiungiIva(prezzo);
+	
 	
 	System.out.println("Sono il prodotto " + nome + ".\n"
 			+ "Ecco le mie caratteristiche: \n" 
 			+ "Descrizione: " + descrizione + "\n"
 			+ "Prezzo " + prezzo + "\n"
-			+ "Codice " + codice + "\n" );
+			+ "Codice " + codice + "\n" 
+			+ "Il mio prezzo comprensivo di Iva è " + prezzoIva + "\n" );
 }
 
 // metodo numero random 
-
-
 public int numeroRandom() { 
   
         // create random object 
@@ -71,15 +74,26 @@ public int numeroRandom() {
 
 //metodo per prezzo base
 
-	public double basePrice() {
-		
-		if (prezzo <= 19) {
-		
-			this.setPrezzo(20);
+		public double basePrice(double prezzo) {
 			
+			if (prezzo == 0 && prezzo < 10) {
+				
+				double prezzobase = setPrezzo(20);
+			}
+			
+		
+		
+		
 		}
-		return prezzo;
-	}
+
+// metodo aggiungi iva e restituisci prezzo ivato
+
+public double aggiungiIva(double prezzoPartenza) {
+	
+	double prezzoIvato = prezzoPartenza * iva + prezzoPartenza;
+	return prezzoIvato;
+}
+
 	
 // metodo getter e setter 
 
@@ -114,7 +128,7 @@ public int numeroRandom() {
 		return prezzo;
 	}
 
-	public void setPrezzo(double prezzo) {
+	public double setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
 
@@ -123,5 +137,6 @@ public int numeroRandom() {
 	}
 
 
+	
 
 }
