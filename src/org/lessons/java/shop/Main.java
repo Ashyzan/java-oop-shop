@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Prodotto maglia = new Prodotto("maglia", "bianca con disegno irregolare sul fronte", 10 );
+		Prodotto maglia = new Prodotto("maglia", "bianca con disegno irregolare sul fronte", -0.2 );
 
 		
 	

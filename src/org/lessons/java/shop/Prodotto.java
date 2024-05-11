@@ -36,6 +36,10 @@ public class Prodotto {
 	
 	private double prezzoIva;
 	
+	private String nomeEsteso;
+	
+	private static String codicePad;
+	
 
 // costruttore
 public Prodotto( String nome , String descrizione , double prezzo)  {
@@ -46,17 +50,23 @@ public Prodotto( String nome , String descrizione , double prezzo)  {
 	
 	this.descrizione = descrizione;
 	
-	this.prezzo = basePrice(prezzo);
+	this.prezzo = setPrezzo(prezzo);
 	
 	this.prezzoIva = aggiungiIva(prezzo);
+	
+	this.nomeEsteso = nomeEstesoUser();
+	
+//	this.codicePad = pad();
 	
 	
 	System.out.println("Sono il prodotto " + nome + ".\n"
 			+ "Ecco le mie caratteristiche: \n" 
 			+ "Descrizione: " + descrizione + "\n"
-			+ "Prezzo " + prezzo + "\n"
 			+ "Codice " + codice + "\n" 
-			+ "Il mio prezzo comprensivo di Iva è " + prezzoIva + "\n" );
+			+ "Il mio prezzo base è " + prezzo + "\n"
+			+ "Il mio prezzo comprensivo di Iva è " + prezzoIva + "\n"
+			+ "Il mio nome esteso è " + nomeEsteso + "\n"
+			+ "Il mio codice PAD è " + codicePad + "\n");
 }
 
 // metodo numero random 
@@ -66,25 +76,12 @@ public int numeroRandom() {
         Random ran = new Random(); 
   
         // generating integer 
-        int nxt = ran.nextInt(999999); 
+        int nxt = ran.nextInt(99999999); 
         
         return nxt;
      
 } 
 
-//metodo per prezzo base
-
-		public double basePrice(double prezzo) {
-			
-			if (prezzo == 0 && prezzo < 10) {
-				
-				double prezzobase = setPrezzo(20);
-			}
-			
-		
-		
-		
-		}
 
 // metodo aggiungi iva e restituisci prezzo ivato
 
@@ -94,7 +91,55 @@ public double aggiungiIva(double prezzoPartenza) {
 	return prezzoIvato;
 }
 
+// metodo nome esteso
+
+public String nomeEstesoUser() {
 	
+	String codiceStringa =  codice + "";
+	
+	String nomeEstesoUtente = nome +  codiceStringa;
+	return nomeEstesoUtente;
+	
+	
+}
+
+// BONUS Metodo PAD
+
+//
+//public String pad() {
+//	
+//	// BONUS:
+//    // il codice che ha numero random è compreso fra 0 e 99999999. 
+//    // devo passare il parametro random in un ciclo for (trasformando il numero in stringa?).
+//    // ciclo for : se il numero alla posizione 1 è diverso da zero scrivilo, altirimenti scrivi zero.
+//	
+//	
+//	String codiceStringa =  numeroRandom() + "";
+//	
+//	for (int i = 0; i < codiceStringa.length() ; i++) {
+//		
+//		String currentNum = codiceStringa[i];
+//
+//		if (i != 0) {
+//			
+//			System.out.print(i);
+//			
+//			}
+//		
+//		else {
+//			System.out.print(0);
+//			
+//			}
+//		}
+//	
+//		return currentNum ;
+//		
+//	
+//	
+//	}
+//	
+
+
 // metodo getter e setter 
 
 	public int getCodice() {
@@ -128,15 +173,23 @@ public double aggiungiIva(double prezzoPartenza) {
 		return prezzo;
 	}
 
-	public double setPrezzo(double prezzo) {
-		this.prezzo = prezzo;
+	public double setPrezzo(double prezzoInserito) {
+		
+		if (prezzoInserito < 10) {
+			this.prezzo = 0;
+		}
+		
+		else {
+			this.prezzo = prezzoInserito;
+		}
+		
+		return prezzo;
+		
 	}
 
 	public double getIva() {
 		return iva;
 	}
 
-
-	
 
 }
