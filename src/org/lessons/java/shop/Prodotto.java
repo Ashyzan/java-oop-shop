@@ -1,5 +1,7 @@
 package org.lessons.java.shop;
 
+import java.util.Random;
+
 public class Prodotto {
 	
 ////	Un prodotto è caratterizzato da: - codice (numero intero) - nome - descrizione - prezzo - iva
@@ -30,12 +32,12 @@ public class Prodotto {
 	
 	private double prezzo;
 	
-	private double iva;
+	private static double iva;
 
 // costruttore
-public Prodotto( int codice , String nome , String descrizione , double prezzo , double iva)  {
+public Prodotto( String nome , String descrizione , double prezzo)  {
 	
-	this.codice = (int)Math.random() * 5;
+	this.codice = numeroRandom();
 	
 	this.nome = nome;
 	
@@ -43,9 +45,42 @@ public Prodotto( int codice , String nome , String descrizione , double prezzo ,
 	
 	this.prezzo = prezzo;
 	
-	this.iva = iva;
+	this.iva = prezzo * 0.22;
+	
+	System.out.println("Sono il prodotto " + nome + ".\n"
+			+ "Ecco le mie caratteristiche: \n" 
+			+ "Descrizione: " + descrizione + "\n"
+			+ "Prezzo " + prezzo + "\n"
+			+ "Codice " + codice + "\n" );
 }
 
+// metodo numero random 
+
+
+public int numeroRandom() { 
+  
+        // create random object 
+        Random ran = new Random(); 
+  
+        // generating integer 
+        int nxt = ran.nextInt(999999); 
+        
+        return nxt;
+     
+} 
+
+//metodo per prezzo base
+
+	public double basePrice() {
+		
+		if (prezzo <= 19) {
+		
+			this.setPrezzo(20);
+			
+		}
+		return prezzo;
+	}
+	
 // metodo getter e setter 
 
 	public int getCodice() {
@@ -87,18 +122,6 @@ public Prodotto( int codice , String nome , String descrizione , double prezzo ,
 		return iva;
 	}
 
-	public void setIva(double iva) {
-		this.iva = iva;
-	}
-	
-	// metodo per prezzo base
-	
-	public double basePrice(double prezzo) {
-		
-		 this.prezzo = 20.00;
-		
-		
-	}
 
 
 }
