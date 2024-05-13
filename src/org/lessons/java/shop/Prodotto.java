@@ -33,12 +33,14 @@ public class Prodotto {
 	private double prezzo;
 	
 	private static double iva = 0.22;
+
+	//private static void codicePad;
 	
 	private double prezzoIva;
 	
 	private String nomeEsteso;
 	
-	private static String codicePad;
+	//private static int codicePad;
 	
 
 // costruttore
@@ -56,7 +58,7 @@ public Prodotto( String nome , String descrizione , double prezzo)  {
 	
 	this.nomeEsteso = nomeEstesoUser();
 	
-//	this.codicePad = pad();
+	// this.codicePad = pad();
 	
 	
 	System.out.println("Sono il prodotto " + this.nome + ".\n"
@@ -66,7 +68,9 @@ public Prodotto( String nome , String descrizione , double prezzo)  {
 			+ "Il mio prezzo base è " + this.prezzo + "\n"
 			+ "Il mio prezzo comprensivo di Iva è " + this.prezzoIva + "\n"
 			+ "Il mio nome esteso è " + this.nomeEsteso + "\n"
-			+ "Il mio codice PAD è " + this.codicePad + "\n");
+		//	+ "Il mio codice PAD è " + Prodotto.codicePad + "\n"
+			)
+			;
 }
 
 // metodo numero random 
@@ -114,38 +118,28 @@ public String nomeEstesoUser() {
 // BONUS Metodo PAD
 
 //
-//public String pad() {
-//	
-//	// BONUS:
-//    // il codice che ha numero random è compreso fra 0 e 99999999. 
-//    // devo passare il parametro random in un ciclo for (trasformando il numero in stringa?).
-//    // ciclo for : se il numero alla posizione 1 è diverso da zero scrivilo, altirimenti scrivi zero.
-//	
-//	
-//	String codiceStringa =  numeroRandom() + "";
-//	
-//	for (int i = 0; i < codiceStringa.length() ; i++) {
-//		
-//		String currentNum = codiceStringa[i];
-//
-//		if (i != 0) {
-//			
-//			System.out.print(i);
-//			
-//			}
-//		
-//		else {
-//			System.out.print(0);
-//			
-//			}
-//		}
-//	
-//		return currentNum ;
-//		
-//	
-//	
-//	}
-//	
+public void pad() {
+	
+	// BONUS:
+    // il codice che ha numero random è compreso fra 0 e 99999999. 
+    // devo passare il parametro random in un ciclo for (trasformando il numero in stringa?).
+    // ciclo for : se il numero alla posizione 1 è diverso da zero scrivilo, altirimenti scrivi zero.
+	
+	// uso il metodo nexInt specificando un numero a 0 a 9. lo metto in un ciclo di 8 e stampo i numeri.
+	
+	for (int i = 0; i < 8 ; i++) {
+	// crea oggetto Random
+    Random random = new Random();
+    // genera numero casuale tra 0 e 9
+    int number = random.nextInt(9);
+    System.out.print(number);
+    
+    
+		}
+	
+	
+	}
+	
 
 
 // metodo getter e setter 
@@ -198,6 +192,16 @@ public String nomeEstesoUser() {
 	public double getIva() {
 		return iva;
 	}
+
+//	public static Object getCodicePad() {
+//		return codicePad;
+//	}
+//
+//	public static void setCodicePad(Object codicePad) {
+//		Prodotto.codicePad = codicePad;
+//	}
+	
+
 
 
 }
