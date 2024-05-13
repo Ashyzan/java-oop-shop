@@ -52,21 +52,21 @@ public Prodotto( String nome , String descrizione , double prezzo)  {
 	
 	setPrezzo(prezzo);
 	
-	this.prezzoIva = aggiungiIva(prezzo);
+	aggiungiIva(prezzo);
 	
 	this.nomeEsteso = nomeEstesoUser();
 	
 //	this.codicePad = pad();
 	
 	
-	System.out.println("Sono il prodotto " + nome + ".\n"
+	System.out.println("Sono il prodotto " + this.nome + ".\n"
 			+ "Ecco le mie caratteristiche: \n" 
-			+ "Descrizione: " + descrizione + "\n"
-			+ "Codice " + codice + "\n" 
-			+ "Il mio prezzo base è " + prezzo + "\n"
-			+ "Il mio prezzo comprensivo di Iva è " + prezzoIva + "\n"
-			+ "Il mio nome esteso è " + nomeEsteso + "\n"
-			+ "Il mio codice PAD è " + codicePad + "\n");
+			+ "Descrizione: " + this.descrizione + "\n"
+			+ "Codice " + this.codice + "\n" 
+			+ "Il mio prezzo base è " + this.prezzo + "\n"
+			+ "Il mio prezzo comprensivo di Iva è " + this.prezzoIva + "\n"
+			+ "Il mio nome esteso è " + this.nomeEsteso + "\n"
+			+ "Il mio codice PAD è " + this.codicePad + "\n");
 }
 
 // metodo numero random 
@@ -175,7 +175,7 @@ public String nomeEstesoUser() {
 
 	public void setPrezzo(double prezzoInserito) {
 		
-		if (prezzoInserito < 10) {
+		if (prezzoInserito < 0) {
 			this.prezzo = 0;
 		}
 		
