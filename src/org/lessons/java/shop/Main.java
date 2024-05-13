@@ -6,7 +6,7 @@ public class Main {
 		
 		Prodotto maglia = new Prodotto("maglia", "bianca con disegno irregolare sul fronte", -0.2 );
 
-		
+		Prodotto pantaloni = new Prodotto("Jeans", "pantaloni jeans chiari con strappi sulle ginocchia", 30);
 	
 	}
 

@@ -52,7 +52,7 @@ public Prodotto( String nome , String descrizione , double prezzo)  {
 	
 	setPrezzo(prezzo);
 	
-	aggiungiIva(prezzo);
+	this.prezzoIva = aggiungiIva(this.prezzo);
 	
 	this.nomeEsteso = nomeEstesoUser();
 	
@@ -86,6 +86,14 @@ public int numeroRandom() {
 // metodo aggiungi iva e restituisci prezzo ivato
 
 public double aggiungiIva(double prezzoPartenza) {
+	
+	if (prezzoPartenza < 0) {
+		this.prezzo = 0;
+	}
+	
+	else {
+		this.prezzo = prezzoPartenza;
+	}
 	
 	double prezzoIvato = prezzoPartenza * iva + prezzoPartenza;
 	return prezzoIvato;
