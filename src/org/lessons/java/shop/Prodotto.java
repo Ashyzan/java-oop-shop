@@ -50,7 +50,7 @@ public Prodotto( String nome , String descrizione , double prezzo)  {
 	
 	this.descrizione = descrizione;
 	
-	this.prezzo = setPrezzo(prezzo);
+	setPrezzo(prezzo);
 	
 	this.prezzoIva = aggiungiIva(prezzo);
 	
@@ -173,7 +173,7 @@ public String nomeEstesoUser() {
 		return prezzo;
 	}
 
-	public double setPrezzo(double prezzoInserito) {
+	public void setPrezzo(double prezzoInserito) {
 		
 		if (prezzoInserito < 10) {
 			this.prezzo = 0;
@@ -183,7 +183,7 @@ public String nomeEstesoUser() {
 			this.prezzo = prezzoInserito;
 		}
 		
-		return prezzo;
+		
 		
 	}
 
